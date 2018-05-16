@@ -139,6 +139,15 @@ vector_entry workaround_bpflush_serror_aarch32
 
 	.global	denver_disable_dco
 
+func check_errata_cve_2017_5715
+#if WORKAROUND_CVE_2017_5715
+	mov	x0, #ERRATA_APPLIES
+#else
+	mov	x0, #ERRATA_MISSING
+#endif
+	ret
+endfunc check_errata_cve_2017_5715
+
 	/* ---------------------------------------------
 	 * Disable debug interfaces
 	 * ---------------------------------------------
@@ -267,27 +276,32 @@ func denver_cpu_reg_dump
 	ret
 endfunc denver_cpu_reg_dump
 
-declare_cpu_ops denver, DENVER_MIDR_PN0, \
+declare_cpu_ops_wa denver, DENVER_MIDR_PN0, \
 	denver_reset_func, \
+	check_errata_cve_2017_5715, \
 	denver_core_pwr_dwn, \
 	denver_cluster_pwr_dwn
 
-declare_cpu_ops denver, DENVER_MIDR_PN1, \
+declare_cpu_ops_wa denver, DENVER_MIDR_PN1, \
 	denver_reset_func, \
+	check_errata_cve_2017_5715, \
 	denver_core_pwr_dwn, \
 	denver_cluster_pwr_dwn
 
-declare_cpu_ops denver, DENVER_MIDR_PN2, \
+declare_cpu_ops_wa denver, DENVER_MIDR_PN2, \
 	denver_reset_func, \
+	check_errata_cve_2017_5715, \
 	denver_core_pwr_dwn, \
 	denver_cluster_pwr_dwn
 
-declare_cpu_ops denver, DENVER_MIDR_PN3, \
+declare_cpu_ops_wa denver, DENVER_MIDR_PN3, \
 	denver_reset_func, \
+	check_errata_cve_2017_5715, \
 	denver_core_pwr_dwn, \
 	denver_cluster_pwr_dwn
 
-declare_cpu_ops denver, DENVER_MIDR_PN4, \
+declare_cpu_ops_wa denver, DENVER_MIDR_PN4, \
 	denver_reset_func, \
+	check_errata_cve_2017_5715, \
 	denver_core_pwr_dwn, \
 	denver_cluster_pwr_dwn
