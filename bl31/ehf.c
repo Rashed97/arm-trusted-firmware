@@ -53,7 +53,7 @@ static int pri_to_idx(unsigned int priority)
 	int idx;
 
 	idx = EHF_PRI_TO_IDX(priority, exception_data.pri_bits);
-	assert((idx >= 0) && (idx < exception_data.num_priorities));
+	assert((idx >= 0) && ((unsigned)idx < exception_data.num_priorities));
 	assert(IS_IDX_VALID(idx));
 
 	return idx;
@@ -407,7 +407,7 @@ static uint64_t ehf_el3_interrupt_handler(uint32_t id, uint32_t flags,
 	 */
 	intr_raw = plat_ic_acknowledge_interrupt();
 	intr = plat_ic_get_interrupt_id(intr_raw);
-	if (intr == INTR_ID_UNAVAILABLE)
+	if ((unsigned)intr == INTR_ID_UNAVAILABLE)
 		return 0;
 
 	/* Having acknowledged the interrupt, get the running priority */
@@ -494,7 +494,7 @@ void ehf_register_priority_handler(unsigned int pri, ehf_handler_t handler)
 
 	/* Ensure we register for valid priority */
 	idx = pri_to_idx(pri);
-	assert(idx < exception_data.num_priorities);
+	assert((unsigned)idx < exception_data.num_priorities);
 	assert(IDX_TO_PRI(idx) == pri);
 
 	/* Return failure if a handler was already registered */

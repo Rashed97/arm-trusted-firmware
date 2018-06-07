@@ -480,7 +480,7 @@ void gicv2_raise_sgi(int sgi_num, int proc_num)
 	 * should be valid.
 	 */
 	assert(driver_data->target_masks);
-	assert(proc_num < driver_data->target_masks_num);
+	assert((unsigned)proc_num < driver_data->target_masks_num);
 
 	/* Don't raise SGI if the mask hasn't been populated */
 	target = driver_data->target_masks[proc_num];
@@ -517,7 +517,7 @@ void gicv2_set_spi_routing(unsigned int id, int proc_num)
 	 */
 	assert(driver_data->target_masks);
 	assert(proc_num < GICV2_MAX_TARGET_PE);
-	assert(proc_num < driver_data->target_masks_num);
+	assert((unsigned)proc_num < driver_data->target_masks_num);
 
 	if (proc_num < 0) {
 		/* Target all PEs */
