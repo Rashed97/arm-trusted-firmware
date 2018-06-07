@@ -437,11 +437,10 @@ void tegra_memctrl_tzdram_setup(uint64_t phys_base, uint32_t size_in_bytes)
 	 */
 
 	mmio_write_32(TEGRA_SCRATCH_BASE + SECURE_SCRATCH_RSV55_LO,
-					tegra_mc_read_32(MC_SECURITY_CFG0_0));
+					(tegra_mc_read_32(MC_SECURITY_CFG1_0) & 0x1FFF) |
+					(tegra_mc_read_32(MC_SECURITY_CFG0_0) & 0xFFF00000));
 	mmio_write_32(TEGRA_SCRATCH_BASE + SECURE_SCRATCH_RSV55_HI,
-					tegra_mc_read_32(MC_SECURITY_CFG3_0));
-	mmio_write_32(TEGRA_SCRATCH_BASE + SECURE_SCRATCH_RSV54_HI,
-					tegra_mc_read_32(MC_SECURITY_CFG1_0));
+					tegra_mc_read_32(MC_SECURITY_CFG3_0) & 0x3);
 
 	/*
 	 * MCE propagates the security configuration values across the
