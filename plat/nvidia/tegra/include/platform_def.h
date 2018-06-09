@@ -65,4 +65,10 @@
 #define CACHE_WRITEBACK_SHIFT		6
 #define CACHE_WRITEBACK_GRANULE		(U(1) << CACHE_WRITEBACK_SHIFT)
 
+/*******************************************************************************
+ * GICv2/3 & interrupt handling related constants
+ ******************************************************************************/
+#define PLAT_ARM_GICD_BASE TEGRA_GICD_BASE
+#define PLAT_ARM_GICC_BASE TEGRA_GICC_BASE
+
 #endif /* __PLATFORM_DEF_H__ */
