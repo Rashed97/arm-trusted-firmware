@@ -64,7 +64,9 @@ Tegra supports multiple Trusted OS', Trusted Little Kernel (TLK) being one of
 them. In order to include the 'tlkd' dispatcher in the image, pass 'SPD=tlkd'
 on the command line while preparing a bl31 image. This allows other Trusted OS
 vendors to use the upstream code and include their dispatchers in the image
-without changing any makefiles.
+without changing any makefiles. Tegra also support Trusty OS, a TEE developed
+by Google with sample apps for Android. To include the 'trusty' dispatcher in
+the image, pass 'SPD=trusty' on the command line while preparing a bl31 image.
 
 Preparing the BL31 image to run on Tegra SoCs
 =============================================
