@@ -1,6 +1,17 @@
 Tegra SoCs - Overview
 =====================
 
+-  .. rubric:: T186
+      :name: t186
+
+T186 has Quad Arm® Cortex®-A57 cores in a switched configuration with a
+companion set of dual NVIDIA Denver2 cores. The Cortex-A57 and Denver2 cores
+support Armv8-A, executing both 64-bit Aarch64 code, and 32-bit Aarch32 code
+including legacy Armv7-A applications. The Cortex-A57 processors each have
+48 KB Instruction and 32 KB Data Level 1 caches; and have a 2 MB shared
+Level 2 unified cache. The Denver2 processors each have 128 KB Instruction
+and 64 KB Data Level 1 caches; and have a 2 MB shared Level 2 unified cache.
+
 -  .. rubric:: T210
       :name: t210
 
