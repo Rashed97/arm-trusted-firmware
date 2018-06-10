@@ -318,6 +318,10 @@ void bl31_plat_arch_setup(void)
 	mmap_add_region(code_base, code_base,
 			code_size,
 			MT_CODE | MT_SECURE);
+	mmap_add_region(params_from_bl2->tzdram_base,
+			params_from_bl2->tzdram_base,
+			params_from_bl2->tzdram_size,
+			MT_DEVICE | MT_RW | MT_SECURE);
 
 	/* map TZDRAM used by BL31 as coherent memory */
 	if (TEGRA_TZRAM_BASE == tegra_bl31_phys_base) {
