@@ -64,3 +64,9 @@ BL31_SOURCES		+=	lib/cpus/aarch64/denver.S		\
 				${SOC_DIR}/plat_smmu.c			\
 				${SOC_DIR}/plat_trampoline.S
 
+# Enable workarounds for selected Cortex-A57 erratas.
+ERRATA_A57_813419               :=	1
+ERRATA_A57_859972               :=	1
+
+# Enable workarounds for selected Denver erratas.
+WORKAROUND_CVE_2017_5715        :=	1
